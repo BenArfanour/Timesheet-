@@ -1,9 +1,23 @@
-# Learn more about services, parameters and containers at
-# https://symfony.com/doc/current/service_container.html
 parameters:
-    #parameter_name: value
 
 services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    # Pour la redirection aprés l'authentification
+    authentication.handler.login_success_handler:
+        class:  AppBundle\Redirection\LoginSuccessHandler
+        arguments:  ['@router', '@security.authorization_checker']
+
+    admin.projet:
+        class: AppBundle\Admin\AdminProjet
+        arguments: [~, AppBundle\Entity\Projet, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm,group: "Projet", label: Projet ,icon: '<i class="fa fa-vcard-o"></i>' }
+        public: true
+
+    admin.Client:
+        class: AppBundle\Admin\AdminClient
+        arguments: [~, AppBundle\Entity\Client, ~]
+        tags:
+          - { name: sonata.admin, manager_type: orm,group: "Client", label: Client ,icon: '<i class="fa fa-user"></i>'}
+        public: true
+

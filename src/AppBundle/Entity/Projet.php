@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Projet
  *
  * @ORM\Table(name="projet")
- *
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjetRepository")
  */
 class Projet
 {
@@ -31,17 +31,16 @@ class Projet
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="date")
+     * @ORM\Column(name="startdate", type="date")
      */
-    private $startDate;
-
+    private $startdate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="date")
+     * @ORM\Column(name="enddate", type="date")
      */
-    private $endDate;
+    private $enddate;
 
 
     /**
@@ -50,30 +49,10 @@ class Projet
      */
     private  $client;
 
-//
-//    /**
-//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\TimeSheet" ,mappedBy="sheeets",cascade={"remove", "persist"})
-//     */
-//    private  $projet;
-
-
-
-
-
-
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->projet = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -105,51 +84,51 @@ class Projet
     }
 
     /**
-     * Set startDate
+     * Set startdate
      *
-     * @param \DateTime $startDate
+     * @param \DateTime $startdate
      *
      * @return Projet
      */
-    public function setStartDate($startDate)
+    public function setStartdate($startdate)
     {
-        $this->startDate = $startDate;
+        $this->startdate = $startdate;
 
         return $this;
     }
 
     /**
-     * Get startDate
+     * Get startdate
      *
      * @return \DateTime
      */
-    public function getStartDate()
+    public function getStartdate()
     {
-        return $this->startDate;
+        return $this->startdate;
     }
 
     /**
-     * Set endDate
+     * Set enddate
      *
-     * @param \DateTime $endDate
+     * @param \DateTime $enddate
      *
      * @return Projet
      */
-    public function setEndDate($endDate)
+    public function setEnddate($enddate)
     {
-        $this->endDate = $endDate;
+        $this->enddate = $enddate;
 
         return $this;
     }
 
     /**
-     * Get endDate
+     * Get enddate
      *
      * @return \DateTime
      */
-    public function getEndDate()
+    public function getEnddate()
     {
-        return $this->endDate;
+        return $this->enddate;
     }
 
     /**
@@ -175,43 +154,5 @@ class Projet
     {
         return $this->client;
     }
-//
-//    /**
-//     * Add projet
-//     *
-//     * @param \AppBundle\Entity\TimeSheet $projet
-//     *
-//     * @return Projet
-//     */
-//    public function addProjet(\AppBundle\Entity\TimeSheet $projet)
-//    {
-//        $this->projet[] = $projet;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Remove projet
-//     *
-//     * @param \AppBundle\Entity\TimeSheet $projet
-//     */
-//    public function removeProjet(\AppBundle\Entity\TimeSheet $projet)
-//    {
-//        $this->projet->removeElement($projet);
-//    }
-//
-//    /**
-//     * Get projet
-//     *
-//     * @return \Doctrine\Common\Collections\Collection
-//     */
-//    public function getProjet()
-//    {
-//        return $this->projet;
-//    }
 
-    public function __toString()
-    {
-        return 'ok' ;
-    }
 }

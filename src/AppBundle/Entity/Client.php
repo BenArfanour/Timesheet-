@@ -4,12 +4,11 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * Client
  *
  * @ORM\Table(name="client")
- *
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ClientRepository")
  */
 class Client
 {
@@ -99,7 +98,13 @@ class Client
     {
         return $this->pays;
     }
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Add projet
@@ -134,16 +139,9 @@ class Client
     {
         return $this->projets;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->projets = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+
     public function __toString()
     {
-        return 'ok';
+        return $this->getNom();
     }
-
 }

@@ -6,6 +6,7 @@ security:
             security: false
 
         # -> custom firewall for the admin area of the URL
+
         admin:
             pattern:            /admin(.*)
             context:            user
@@ -31,6 +32,8 @@ security:
             context:             user
             form_login:
                 provider:       fos_userbundle
+                success_handler: authentication.handler.login_success_handler
+                csrf_token_generator: security.csrf.token_manager
                 login_path:     /login
                 use_forward:    false
                 check_path:     /login_check
@@ -64,3 +67,4 @@ security:
             # Change these rules to adapt them to your needs
             - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
             - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

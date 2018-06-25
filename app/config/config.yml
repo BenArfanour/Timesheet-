@@ -34,6 +34,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - '@SonataCore/Form/datepicker.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -54,15 +56,12 @@ doctrine:
         types:
             json: Sonata\Doctrine\Types\JsonType
     orm:
-#        auto_generate_proxy_classes: '%kernel.debug%'
-#        naming_strategy: doctrine.orm.naming_strategy.underscore
-#        auto_mapping: true
-        entity_managers:
-            default:
-                mappings:
-                    SonataUserBundle: ~
-                    FOSUserBundle: ~
-                    ApplicationSonataUserBundle: ~
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+        mappings:
+                SonataUserBundle: ~
+                FOSUserBundle: ~
+                ApplicationSonataUserBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:

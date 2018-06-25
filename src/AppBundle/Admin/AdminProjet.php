@@ -11,12 +11,11 @@ namespace AppBundle\Admin;
 
 
 use AppBundle\Entity\Client;
-use AppBundle\Entity\Projet;
+use Doctrine\ORM\Mapping\Entity;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 class AdminProjet extends AbstractAdmin
@@ -59,11 +58,13 @@ class AdminProjet extends AbstractAdmin
             ->add('startDate', 'date', array(
                 'pattern' => 'dd MMM y G',
                 'locale' => 'fr',
+                'label' => 'Date de début',
                 'timezone' => 'Europe/Paris',
             ))
             ->add('endDate', 'date', array(
                 'pattern' => 'dd MMM y G',
                 'locale' => 'fr',
+                'label' => 'Date de Fin',
                 'timezone' => 'Europe/Paris',
             ))
             ->add('Client', EntityType::class, [
