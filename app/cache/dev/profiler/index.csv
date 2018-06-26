@@ -14,3 +14,11 @@ ddb758,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_loc
 cd990e,127.0.0.1,GET,http://127.0.0.1:8000/cal,1530027883,,200
 ff71eb,127.0.0.1,GET,http://127.0.0.1:8000/js/routing?callback=fos.Router.setData,1530027883,,200
 c25bb5,127.0.0.1,GET,http://127.0.0.1:8000/fullcalendar/load?_=1530027883987&end=2018-07-08&month=06&start=2018-05-27&year=2018,1530027884,,200
+e18672,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ATimesheet%253Anew,1530028962,083c07,200
+083c07,127.0.0.1,GET,http://127.0.0.1:8000/cal,1530028962,,200
+abee1c,127.0.0.1,GET,http://127.0.0.1:8000/js/routing?callback=fos.Router.setData,1530028962,,200
+66613f,127.0.0.1,GET,http://127.0.0.1:8000/fullcalendar/load?_=1530028962254&end=2018-07-08&month=06&start=2018-05-27&year=2018,1530028962,,200
+d54d5f,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DAppBundle%253ATimesheet%253Anew,1530029074,ebf9bb,200
+ebf9bb,127.0.0.1,GET,http://127.0.0.1:8000/cal,1530029074,,200
+f32344,127.0.0.1,GET,http://127.0.0.1:8000/js/routing?callback=fos.Router.setData,1530029074,,200
+abdee3,127.0.0.1,GET,http://127.0.0.1:8000/fullcalendar/load?_=1530029074181&end=2018-07-08&month=06&start=2018-05-27&year=2018,1530029074,,200

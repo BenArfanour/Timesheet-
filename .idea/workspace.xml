@@ -2,33 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8abebb81-7613-4baf-89dd-176b514f25f2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/calendar.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/dayclick.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/profile.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Timesheet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/timesheet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/timesheet.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AppKernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bootstrap.php.cache" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap.php.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routing.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/security.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/security.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/dayclick.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/dayclick.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/app/cache/dev/profiler/index.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cache/dev/twig/88/88cd5af9572bcd597c5aedd8be05b591a8fdeac3c2b0f04f6c50d69fdc039eec.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/cache/dev/twig/88/88cd5af9572bcd597c5aedd8be05b591a8fdeac3c2b0f04f6c50d69fdc039eec.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/logs/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/app/logs/dev.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Projet.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Projet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Redirection/LoginSuccessHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Redirection/LoginSuccessHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Sonata/UserBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Sonata/UserBundle/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/config.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,49 +23,37 @@
       <file leaf-file-name="calendar.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/calendar.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+            <state relative-caret-position="111">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="e#223#240#0#Twig" expanded="true" />
                 <element signature="e#1148#1174#0#HTML" expanded="true" />
+                <element signature="e#1263#1283#0#Twig" expanded="true" />
                 <element signature="e#1670#1677#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dayclick.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dayclick.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/dayclick.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="29" column="52" lean-forward="true" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+            <state relative-caret-position="90">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TimesheetController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TimesheetController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TimesheetController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="283">
-              <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+              <caret line="69" column="35" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
               <folding>
                 <element signature="e#40#71#0#PHP" expanded="true" />
                 <element signature="e#1668#1686#1#PHP" expanded="true" />
                 <element signature="e#2472#2482#1#PHP" expanded="true" />
                 <element signature="e#1442#1467#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/timesheet/new.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-              <folding>
-                <element signature="e#21#49#0#Twig" expanded="true" />
-                <element signature="e#578#591#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,9 +127,9 @@
         <option value="$PROJECT_DIR$/src/Application/Sonata/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/calendar.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/dayclick.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/timesheet/new.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/TimesheetController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/dayclick.html.twig" />
       </list>
     </option>
   </component>
@@ -360,12 +326,12 @@
       <updated>1529657793068</updated>
       <workItem from="1529657817094" duration="39018000" />
       <workItem from="1530000168533" duration="627000" />
-      <workItem from="1530002203306" duration="16744000" />
+      <workItem from="1530002203306" duration="17608000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56389000" />
+    <option name="totallyTimeSpent" value="57253000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -718,23 +684,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/calendar.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+        <state relative-caret-position="111">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="e#223#240#0#Twig" expanded="true" />
             <element signature="e#1148#1174#0#HTML" expanded="true" />
+            <element signature="e#1263#1283#0#Twig" expanded="true" />
             <element signature="e#1670#1677#1#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/timesheet/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding>
-            <element signature="e#21#49#0#Twig" expanded="true" />
-            <element signature="e#578#591#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -749,23 +705,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/dayclick.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/timesheet/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="29" column="52" lean-forward="true" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+        <state relative-caret-position="90">
+          <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+          <folding>
+            <element signature="e#21#49#0#Twig" expanded="true" />
+            <element signature="e#578#591#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TimesheetController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
-          <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+          <caret line="69" column="35" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
           <folding>
             <element signature="e#40#71#0#PHP" expanded="true" />
             <element signature="e#1668#1686#1#PHP" expanded="true" />
             <element signature="e#2472#2482#1#PHP" expanded="true" />
             <element signature="e#1442#1467#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/dayclick.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

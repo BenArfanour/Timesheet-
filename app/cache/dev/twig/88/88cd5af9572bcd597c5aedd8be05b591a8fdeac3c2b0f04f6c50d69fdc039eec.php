@@ -23,18 +23,27 @@ class __TwigTemplate_1a472456713efbfe50fad002dde248a6817f812c6e660a8c57494e37a9c
 <script>
 
 
-    \$('#appbundle_timesheet_type_0').change(function () {
 
+    \$(function(){
+        \$('#appbundle_timesheet_type_0').on('click', function(){
+            if(\$(this).is(':checked')){
+                \$('#appbundle_timesheet_sheeets').attr('disabled', true);
+            } else {
+                \$('#appbundle_timesheet_sheeets).attr('disabled', false);
+            }
+        });
 
-        if (\$('#appbundle_timesheet_type_0').is(':checked')) {
-            \$('#appbundle_timesheet_sheeets').val('160').attr('disabled', 'disabled');
-            console.log('checked');
-        } else {
-            \$('#appbundle_timesheet_sheeets').val('');
-            \$('#appbundle_timesheet_sheeets').removeAttr('disabled');
-            console.log('unchecked');
-        }
     });
+    var update_pizza = function () {
+        if (\$(\"#appbundle_timesheet_type_0\").is(\":checked\")) {
+            \$('#appbundle_timesheet_sheeets').prop('disabled', false);
+        }
+        else {
+            \$('#appbundle_timesheet_sheeets').prop('disabled', 'disabled');
+        }
+    };
+    \$(update_pizza);
+    \$(\"#appbundle_timesheet_type_0\").change(update_pizza);
 
 </script>
 <div id=\"calendarModal\" class=\"modal fade\">
@@ -48,9 +57,9 @@ class __TwigTemplate_1a472456713efbfe50fad002dde248a6817f812c6e660a8c57494e37a9c
             <div id=\"modalBody\" class=\"modal-body\">
 
                 ";
-        // line 30
+        // line 39
         echo $this->env->getExtension('Symfony\Bundle\TwigBundle\Extension\ActionsExtension')->renderUri($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("AppBundle:Timesheet:new"), array());
-        // line 31
+        // line 40
         echo "
             </div>
             <div class=\"modal-footer\">
@@ -77,7 +86,7 @@ class __TwigTemplate_1a472456713efbfe50fad002dde248a6817f812c6e660a8c57494e37a9c
 
     public function getDebugInfo()
     {
-        return array (  54 => 31,  52 => 30,  22 => 2,);
+        return array (  63 => 40,  61 => 39,  22 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -95,18 +104,27 @@ class __TwigTemplate_1a472456713efbfe50fad002dde248a6817f812c6e660a8c57494e37a9c
 <script>
 
 
-    \$('#appbundle_timesheet_type_0').change(function () {
 
+    \$(function(){
+        \$('#appbundle_timesheet_type_0').on('click', function(){
+            if(\$(this).is(':checked')){
+                \$('#appbundle_timesheet_sheeets').attr('disabled', true);
+            } else {
+                \$('#appbundle_timesheet_sheeets).attr('disabled', false);
+            }
+        });
 
-        if (\$('#appbundle_timesheet_type_0').is(':checked')) {
-            \$('#appbundle_timesheet_sheeets').val('160').attr('disabled', 'disabled');
-            console.log('checked');
-        } else {
-            \$('#appbundle_timesheet_sheeets').val('');
-            \$('#appbundle_timesheet_sheeets').removeAttr('disabled');
-            console.log('unchecked');
-        }
     });
+    var update_pizza = function () {
+        if (\$(\"#appbundle_timesheet_type_0\").is(\":checked\")) {
+            \$('#appbundle_timesheet_sheeets').prop('disabled', false);
+        }
+        else {
+            \$('#appbundle_timesheet_sheeets').prop('disabled', 'disabled');
+        }
+    };
+    \$(update_pizza);
+    \$(\"#appbundle_timesheet_type_0\").change(update_pizza);
 
 </script>
 <div id=\"calendarModal\" class=\"modal fade\">
