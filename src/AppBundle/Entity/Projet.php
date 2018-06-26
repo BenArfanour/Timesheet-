@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Projet
 {
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projet = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     /**
      * @var int
      *
@@ -48,6 +56,14 @@ class Projet
      * @ORM\JoinColumn(name="id_client",referencedColumnName="id")
      */
     private  $client;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Timesheet" ,mappedBy="sheeets",cascade={"remove", "persist"})
+     */
+    private  $projet;
+
 
     /**
      * Get id
@@ -155,4 +171,38 @@ class Projet
         return $this->client;
     }
 
+
+    /**
+     * Add projet
+     *
+     * @param \AppBundle\Entity\Timesheet $projet
+     *
+     * @return Projet
+     */
+    public function addProjet(\AppBundle\Entity\Timesheet $projet)
+    {
+        $this->projet[] = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Remove projet
+     *
+     * @param \AppBundle\Entity\Timesheet $projet
+     */
+    public function removeProjet(\AppBundle\Entity\Timesheet $projet)
+    {
+        $this->projet->removeElement($projet);
+    }
+
+    /**
+     * Get projet
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjet()
+    {
+        return $this->projet;
+    }
 }

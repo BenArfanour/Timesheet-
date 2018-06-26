@@ -1,0 +1,50 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: hamza
+ * Date: 26/06/18
+ * Time: 10:50
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use fadosProduccions\fullCalendarBundle\Entity\Event as BaseEvent;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="timesheet")
+ */
+class Timesheet extends BaseEvent
+
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255,nullable=true)
+     */
+    private $type ;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User" ,inversedBy="user",cascade={"remove", "persist"})
+     * @ORM\JoinColumn(name="id_utilisateur",referencedColumnName="id")
+     */
+    private $sheets ;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Projet" ,inversedBy="projet",cascade={"remove", "persist"})
+     * @ORM\JoinColumn(name="id_projet",referencedColumnName="id",nullable=true)
+     */
+    private $sheeets ;
+
+
+}
+

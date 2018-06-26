@@ -105,7 +105,7 @@ abstract class User implements UserInterface, GroupableInterface
      */
     public function __construct()
     {
-        $this->enabled = false;
+        $this->enabled = true;
         $this->roles = array();
     }
 

@@ -98,5 +98,50 @@ class Client
     {
         return $this->pays;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add projet
+     *
+     * @param \AppBundle\Entity\Projet $projet
+     *
+     * @return Client
+     */
+    public function addProjet(\AppBundle\Entity\Projet $projet)
+    {
+        $this->projets[] = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Remove projet
+     *
+     * @param \AppBundle\Entity\Projet $projet
+     */
+    public function removeProjet(\AppBundle\Entity\Projet $projet)
+    {
+        $this->projets->removeElement($projet);
+    }
+
+    /**
+     * Get projets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjets()
+    {
+        return $this->projets;
+    }
+
+    public function __toString()
+    {
+        return 'ok';
+    }
+}

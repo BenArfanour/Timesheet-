@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Projet
 {
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projet = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     /**
      * @var int
      *
@@ -48,6 +56,14 @@ class Projet
      * @ORM\JoinColumn(name="id_client",referencedColumnName="id")
      */
     private  $client;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Timesheet" ,mappedBy="sheeets",cascade={"remove", "persist"})
+     */
+    private  $projet;
+
 
     /**
      * Get id
@@ -130,5 +146,29 @@ class Projet
     {
         return $this->enddate;
     }
-}
 
+    /**
+     * Set client
+     *
+     * @param \AppBundle\Entity\Client $client
+     *
+     * @return Projet
+     */
+    public function setClient(\AppBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \AppBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+}

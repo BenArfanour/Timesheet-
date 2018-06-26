@@ -93,6 +93,7 @@ class ComposerStaticInitd81576e8354e4258b49b2f7f75f5a26a
         array (
             'FOS\\UserBundle\\' => 15,
             'FOS\\RestBundle\\' => 15,
+            'FOS\\JsRoutingBundle\\' => 20,
         ),
         'E' => 
         array (
@@ -291,6 +292,10 @@ class ComposerStaticInitd81576e8354e4258b49b2f7f75f5a26a
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
         ),
+        'FOS\\JsRoutingBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/jsrouting-bundle',
+        ),
         'Exporter\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/exporter/src',
@@ -334,6 +339,13 @@ class ComposerStaticInitd81576e8354e4258b49b2f7f75f5a26a
     );
 
     public static $prefixesPsr0 = array (
+        'f' => 
+        array (
+            'fadosProduccions\\fullCalendarBundle\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/fados-produccions/full-calendar-bundle',
+            ),
+        ),
         'T' => 
         array (
             'Twig_Extensions_' => 

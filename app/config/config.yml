@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi: ~
@@ -62,6 +62,7 @@ doctrine:
                 SonataUserBundle: ~
                 FOSUserBundle: ~
                 ApplicationSonataUserBundle: ~
+                fullCalendarBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -102,3 +103,11 @@ sonata_user:
 sonata_admin:
     title :              Connectez-Vous
     title_logo:          images/abshore.png
+#    security:
+#        handler: sonata.admin.security.handler.role
+#
+#        role_admin: ROLE_ADMIN
+#        role_super_admin: ROLE_SUPER_ADMIN
+
+full_calendar:
+     class_manager: AppBundle\Entity\Timesheet

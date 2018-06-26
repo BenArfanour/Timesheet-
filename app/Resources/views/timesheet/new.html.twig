@@ -1,0 +1,22 @@
+
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            // you may need to change this code if you are not using Bootstrap Datepicker
+            $('.js-datepicker').datepicker({
+                format: 'HH:mm'
+            });
+        });
+    </script>
+    {{ form_start(form, {'action': path('timesheet_new'), 'method': 'POST'}) }}
+    {{ form_widget(form)}}
+
+    <input type="submit" class="btn btn-success btn-block" value="Ajouter">
