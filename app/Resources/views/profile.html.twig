@@ -14,25 +14,28 @@
         <div class="col-md-3">
             <div class="profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
+                {% block header %}
+                {% endblock %}<br><br>
                 <div class="profile-userpic">
-                    <img src="https://static.change.org/profile-img/default-user-profile.svg" class="img-responsive" alt="">
+
+                    <img src="{{ asset('images/homme.jpg') }}" class="img-responsive" alt="">
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        {{ app.user}}
+                        {{ app.user.getFirstname() }} {{ app.user.getLastname() }}
                     </div>
                     <div class="profile-usertitle-job">
-                        {#{{ app.user.groups}}#}
+
                     </div>
                 </div>
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
-                <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-success btn-sm">Follow</button>
-                    <button type="button" class="btn btn-danger btn-sm">Message</button>
-                </div>
+                {#<div class="profile-userbuttons">#}
+                    {#<button type="button" class="btn btn-success btn-sm">Follow</button>#}
+                    {#<button type="button" class="btn btn-danger btn-sm">Message</button>#}
+                {#</div>#}
                 <!-- END SIDEBAR BUTTONS -->
                 <!-- SIDEBAR MENU -->
                 <div class="profile-usermenu">
@@ -49,7 +52,7 @@
                         </li>
                         <li>
                             <a href="{{ path('calendar') }}" target="_blank">
-                                <i class="glyphicon glyphicon-ok"></i>
+                                <i class="glyphicon glyphicon-ok"></i> Timesheet
                                 </a>
                         </li>
                         <li>
@@ -64,7 +67,9 @@
         </div>
         <div class="col-md-9">
             <div class="profile-content">
+
                 {% block body %}
+                 {{ render(controller('AppBundle:Default:cal')) }}
                 {% endblock %}
             </div>
         </div>

@@ -45,7 +45,7 @@
             <div class="panel-body" >
 
 
-                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data"  action="{{ path("fos_user_security_check") }}" method="post">
+                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data"  action="{{ path("fos_user_security_check") }}" method="post" novalidate>
 
                     {% if csrf_token %}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -53,13 +53,13 @@
                     <div class="input-group">
 
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="username" type="text" class="form-control" name="_username" value="{{ last_username }}" placeholder="pseudo ..."  required="required" autocomplete="username">
+                        <input id="username" type="text" class="form-control" name="_username" value="{{ last_username }}" placeholder="Nom d'utilisateur"  required="required" autocomplete="username">
                     </div>
 
                     <div class="input-group">
 
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="password" type="password" class="form-control" name="_password"placeholder="Mot de passe ..." required="required" autocomplete="current-password">
+                        <input id="password" type="password" class="form-control" name="_password"placeholder="Mot de passe" required="required" autocomplete="current-password">
                     </div>
 
 

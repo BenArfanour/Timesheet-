@@ -119,6 +119,7 @@ class Timesheet extends BaseEvent
         return $this;
     }
 
+
     /**
      * Get sheeets
      *
@@ -127,5 +128,23 @@ class Timesheet extends BaseEvent
     public function getSheeets()
     {
         return $this->sheeets;
+    }
+
+    public function toArray()
+    {
+
+        return array(
+            'id'               => $this->id,
+            'title'            => $this->type,
+            'start'            => $this->startDatetime->format("Y-m-d\TH:i:sP"),
+            'end'              => $this->endDatetime->format("Y-m-d\TH:i:sP"),
+            'url'              => $this->url,
+            'backgroundColor'  => $this->bgColor,
+            'borderColor'      => $this->bgColor,
+            'textColor'        => $this->fgColor,
+            'className'        => $this->cssClass,
+            'allDay'           => $this->allDay,
+            'type'             => $this->type,
+        );
     }
 }

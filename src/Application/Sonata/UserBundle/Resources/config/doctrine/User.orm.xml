@@ -6,10 +6,16 @@
 
     <entity name="Application\Sonata\UserBundle\Entity\User" table="fos_user_user">
 
+
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
+                       <one-to-many
+                        field="user"
+                        target-entity="AppBundle\Entity\Timesheet"
+                        mapped-by="sheets"/>
 
     </entity>
+
 
 </doctrine-mapping>

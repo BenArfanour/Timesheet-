@@ -77,9 +77,10 @@ $(function () {
             });
 
         },
+
         eventClick: function(calEvent, jsEvent, view) {
             $('#modal-header').html("<b>Employé :</b>"+calEvent.title);
-            $('#modal-body').html("<b>Type  :</b> "+calEvent.Type +"<br>"+
+            $('#modal-body').html("<b>Type  :</b> "+calEvent.type +"<br>"+
                 "<b>Date de Début :</b>"+calEvent.start.format('DD-MM-YYYY LT')+"<br>"+
                 "<b>Date de Fin:</b>"+calEvent.end.format('DD-MM-YYYY LT'));
             $('#myModal').modal();

@@ -1,11 +1,21 @@
-{#<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>#}
 
 <script>
 
+/* fonction pour disable le champs select*/
+
+$(function(){
+     $('input[type="radio"]').click(function(){
+          if ($(this).is(':checked'))
+        {
+            $("#appbundle_timesheet_sheeets").prop("disabled", true);
+         }
 
 
+    });
+ });
 
 </script>
+
 <div id="calendarModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">

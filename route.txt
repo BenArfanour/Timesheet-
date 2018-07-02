@@ -1,3 +1,7 @@
+
+ ! [CAUTION] The use of "router:debug" command is deprecated since version 2.7 and will be removed in 3.0. Use the      
+ !           "debug:router" instead.                                                                                    
+
  ------------------------------------------ ---------- -------- ------ ---------------------------------------------------- 
   Name                                       Method     Scheme   Host   Path                                                
  ------------------------------------------ ---------- -------- ------ ---------------------------------------------------- 
@@ -15,6 +19,12 @@
   _profiler_exception_css                    ANY        ANY      ANY    /_profiler/{token}/exception.css                    
   _twig_error_test                           ANY        ANY      ANY    /_error/{code}.{_format}                            
   homepage                                   ANY        ANY      ANY    /                                                   
+  calendar                                   ANY        ANY      ANY    /cal                                                
+  timesheet_index                            GET        ANY      ANY    /timesheet/                                         
+  timesheet_new                              GET|POST   ANY      ANY    /timesheet/new                                      
+  timesheet_show                             GET        ANY      ANY    /timesheet/{id}                                     
+  timesheet_edit                             GET|POST   ANY      ANY    /timesheet/{id}/edit                                
+  timesheet_delete                           DELETE     ANY      ANY    /timesheet/{id}                                     
   sonata_admin_redirect                      ANY        ANY      ANY    /admin/                                             
   sonata_admin_dashboard                     ANY        ANY      ANY    /admin/dashboard                                    
   sonata_admin_retrieve_form_element         ANY        ANY      ANY    /admin/core/get-form-field-element                  
@@ -72,5 +82,9 @@
   sonata_user_admin_resetting_send_email     POST       ANY      ANY    /admin/resetting/send-email                         
   sonata_user_admin_resetting_check_email    GET        ANY      ANY    /admin/resetting/check-email                        
   sonata_user_admin_resetting_reset          GET|POST   ANY      ANY    /admin/resetting/reset/{token}                      
+  fos_js_routing_js                          GET        ANY      ANY    /js/routing.{_format}                               
+  fullcalendar_loadevents                    ANY        ANY      ANY    /fullcalendar/load                                  
+  fullcalendar_changedate                    ANY        ANY      ANY    /fullcalendar/change                                
+  fullcalendar_resizedate                    ANY        ANY      ANY    /fullcalendar/resize                                
  ------------------------------------------ ---------- -------- ------ ---------------------------------------------------- 
 

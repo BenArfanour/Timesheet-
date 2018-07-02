@@ -1,8 +1,3 @@
-
-
-
-
-
 {% block javascripts %}
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -11,23 +6,49 @@
     <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/init.fullCalendar.js') }}"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    {#<script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 {% endblock %}
 
-{% block body %}
-    <div align="left">
-        <img src="{{ asset('images/abshore.png') }}" style="border-radius:50px";>
-    </div>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar.print.css') }}" media="print"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
 
+{% block body %}
+   <div align="left">
+          <img src="{{ asset('images/abshore.png') }}" style="border-radius:50px" ;>
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              <div align="right">
+              <b> Dernière connexion</b>  {{ app.user.getLastLogin()|date('d/m/Y') }}
+              </div>
+
+          {% endif %}
+
+      </div>
+      <div align="center">
+
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <h3> Bienvenu </h3>{{ app.user.getFirstname() }} {{ app.user.getLastname() }}
+          {% endif %}
+      </div>
+
+      <div algin="right">
+
+      </div>
     {{ fullCalendar() }}
 
     <!-- pop up of dayClick -->
 
-   {% include '::dayclick.html.twig' %}
+    {% include '::dayclick.html.twig' %}
 
 
 
@@ -46,7 +67,7 @@
                 <!-- Modal body -->
                 <div class="modal-body" id="modal-body">
 
-                    <center> ABSHORE </center>
+                    <center> ABSHORE</center>
 
                 </div>
 
@@ -63,19 +84,13 @@
     <!-- end popup eventclic -->
 
     <style>
-        .fc-widget-header{
-            background-color:#45b2ea;
+        .fc-widget-header {
+            background-color: #45b2ea;
         }
-        .fc-widget-content{
-            background-color:rgba(255, 255, 255, 0.22);
+
+        .fc-widget-content {
+            background-color: rgba(255, 255, 255, 0.22);
         }
     </style>
 
-{% endblock %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar.print.css') }}" media="print" />
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 {% endblock %}

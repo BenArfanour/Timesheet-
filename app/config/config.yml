@@ -110,4 +110,4 @@ sonata_admin:
 #        role_super_admin: ROLE_SUPER_ADMIN
 
 full_calendar:
-     class_manager: AppBundle\Entity\Timesheet
+    class_manager: AppBundle\Entity\Timesheet
