@@ -6,7 +6,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType ;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Sonata\CoreBundle\Form\Type\DateTimePickerType;
+
 
 
 class TimesheetType extends AbstractType
@@ -30,18 +31,28 @@ class TimesheetType extends AbstractType
                 'multiple' => false,
                 'label'    => 'Porjet :',
             ))
-            ->add('startDatetime',DateTimeType::class , array (
+            ->add('startDatetime',DateTimePickerType::class, array (
+                'format'=> 'dd/MM/yyyy ',
+                'dp_side_by_side'       => true,
+                'dp_use_current'        => true,
+                'dp_use_seconds'        => false,
+               // 'show_filter' => true,
                 'widget'=>'single_text',
-                'label' => 'Date de Début :',
+                'label' => 'Date de début :',
                 'html5' => false,
-                'attr' => ['class' => 'js-datepicker'],
             ))
-            ->add('endDatetime',DateTimeType::class , array (
-                'widget'=>'single_text',
-                'label' => 'Date de Fin :',
-                'html5' => false,
-                'attr' => ['class' => 'js-datepicker'],
-            ));
+          ->add('endDatetime',DateTimePickerType::class, array (
+                        'format'=> 'dd/MM/yyyy ',
+                        'dp_side_by_side'       => true,
+                        'dp_use_current'        => true,
+                        'dp_use_seconds'        => false,
+                       // 'show_filter' => true,
+                        'widget'=>'single_text',
+                        'label' => 'Date de début :',
+                        'html5' => false,
+                    ));
+
+
     }/**
  * {@inheritdoc}
  */

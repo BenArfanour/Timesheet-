@@ -105,6 +105,23 @@ class Timesheet extends BaseEvent
         return $this->sheets;
     }
 
+
+    public function getUserName()
+    {
+      return $this->getSheets()->getUsername();
+    }
+
+
+    public function getProjectName()
+    {
+        if ($this->getSheeets() != null) {
+            return $this->getSheeets()->getNom();
+        }
+        else
+             return null ;
+    }
+
+
     /**
      * Set sheeets
      *
@@ -135,7 +152,7 @@ class Timesheet extends BaseEvent
 
         return array(
             'id'               => $this->id,
-            'title'            => $this->type,
+            'title'            => $this->getUserName(),
             'start'            => $this->startDatetime->format("Y-m-d\TH:i:sP"),
             'end'              => $this->endDatetime->format("Y-m-d\TH:i:sP"),
             'url'              => $this->url,
@@ -145,6 +162,9 @@ class Timesheet extends BaseEvent
             'className'        => $this->cssClass,
             'allDay'           => $this->allDay,
             'type'             => $this->type,
+            'sheeets'          => $this->getProjectName(),
+
+
         );
     }
 }

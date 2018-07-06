@@ -9,9 +9,10 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'd11dcc0191a380951885e568af488540' => __DIR__ . '/..' . '/sonata-project/block-bundle/src/Resources/stubs/symfony2.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'e40631d46120a9c38ea139981f8dab26' => __DIR__ . '/..' . '/ircmaxell/password-compat/lib/password.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
@@ -24,6 +25,14 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
     );
 
     public static $prefixLengthsPsr4 = array (
+        'f' => 
+        array (
+            'fados-produccions\\' => 18,
+        ),
+        'Z' => 
+        array (
+            'Zend\\Json\\' => 10,
+        ),
         'T' => 
         array (
             'Twig\\Extensions\\' => 16,
@@ -51,6 +60,7 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
             'Sonata\\UserBundle\\' => 18,
+            'Sonata\\MediaBundle\\' => 19,
             'Sonata\\GoogleAuthenticator\\' => 27,
             'Sonata\\EasyExtendsBundle\\' => 25,
             'Sonata\\Doctrine\\Tests\\' => 22,
@@ -67,6 +77,11 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
+        ),
+        'O' => 
+        array (
+            'Ob\\HighchartsBundle\\' => 20,
         ),
         'N' => 
         array (
@@ -81,12 +96,17 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
             'Knp\\Menu\\' => 9,
             'Knp\\Bundle\\MenuBundle\\' => 22,
         ),
+        'J' => 
+        array (
+            'JMS\\SerializerBundle\\' => 21,
+        ),
         'I' => 
         array (
             'Incenteev\\ParameterHandler\\' => 27,
         ),
         'G' => 
         array (
+            'GuzzleHttp\\Psr7\\' => 16,
             'Google\\Authenticator\\' => 21,
         ),
         'F' => 
@@ -113,6 +133,10 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
         array (
             'Cocur\\Slugify\\' => 14,
         ),
+        'B' => 
+        array (
+            'Buzz\\' => 5,
+        ),
         'A' => 
         array (
             'Application\\' => 12,
@@ -121,6 +145,14 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
     );
 
     public static $prefixDirsPsr4 = array (
+        'fados-produccions\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/fados-produccions',
+        ),
+        'Zend\\Json\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-json/src',
+        ),
         'Twig\\Extensions\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/extensions/src',
@@ -209,6 +241,10 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
         array (
             0 => __DIR__ . '/..' . '/sonata-project/user-bundle/src',
         ),
+        'Sonata\\MediaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/media-bundle/src',
+        ),
         'Sonata\\GoogleAuthenticator\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/google-authenticator/src',
@@ -261,6 +297,14 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Ob\\HighchartsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ob/highcharts-bundle',
+        ),
         'Negotiation\\' => 
         array (
             0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
@@ -277,9 +321,17 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-menu-bundle/src',
         ),
+        'JMS\\SerializerBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jms/serializer-bundle',
+        ),
         'Incenteev\\ParameterHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
         'Google\\Authenticator\\' => 
         array (
@@ -333,6 +385,10 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
         array (
             0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
+        'Buzz\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kriswallsmith/buzz/lib/Buzz',
+        ),
         'Application\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Application',
@@ -373,11 +429,51 @@ class ComposerStaticInit4fce0546e29e3420d9dea27d2ee1c56f
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
             ),
         ),
+        'P' => 
+        array (
+            'PhpOption\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoption/phpoption/src',
+            ),
+            'PhpCollection' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpcollection/phpcollection/src',
+            ),
+        ),
+        'M' => 
+        array (
+            'Metadata\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/metadata/src',
+            ),
+        ),
         'J' => 
         array (
             'JsonpCallbackValidator' => 
             array (
                 0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
+            ),
+            'JMS\\Serializer' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/serializer/src',
+            ),
+            'JMS\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/parser-lib/src',
+            ),
+        ),
+        'I' => 
+        array (
+            'Imagine' => 
+            array (
+                0 => __DIR__ . '/..' . '/imagine/imagine/lib',
+            ),
+        ),
+        'G' => 
+        array (
+            'Gaufrette' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/gaufrette/src',
             ),
         ),
         'D' => 

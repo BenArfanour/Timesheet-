@@ -39,50 +39,58 @@ $(function () {
             var month = view.calendar.getDate().format('MM');
             var year = view.calendar.getDate().format('YYYY');
         },
-        eventDrop: function(event,delta,revertFunc) {
-            var newStartData = event.start.format('YYYY-MM-DD');
-            var newEndData = (event.end == null) ? newStartData : event.end.format('YYYY-MM-DD');
-
-
-            $.ajax({
-                url: Routing.generate('fullcalendar_changedate'),
-                data: { id: event.id, newStartData: newStartData,newEndData:newEndData  },
-                type: 'POST',
-                dataType: 'json',
-                success: function(response){
-                    console.log('ok');
-                },
-                error: function(e){
-                    revertFunc();
-                    alert('Error processing your request: '+e.responseText);
-                }
-            });
-
-        },
-        eventResize: function(event, delta, revertFunc) {
-
-            var newData = event.end.format('YYYY-MM-DD');
-            $.ajax({
-                url: Routing.generate('fullcalendar_resizedate'),
-                data: { id: event.id, newDate: newData },
-                type: 'POST',
-                dataType: 'json',
-                success: function(response){
-                    console.log('ok');
-                },
-                error: function(e){
-                    revertFunc();
-                    alert('Error processing your request: '+e.responseText);
-                }
-            });
-
-        },
+        // eventDrop: function(event,delta,revertFunc) {
+        //     var newStartData = event.start.format('YYYY-MM-DD');
+        //     var newEndData = (event.end == null) ? newStartData : event.end.format('YYYY-MM-DD');
+        //
+        //
+        //     $.ajax({
+        //         url: Routing.generate('fullcalendar_changedate'),
+        //         data: { id: event.id, newStartData: newStartData,newEndData:newEndData  },
+        //         type: 'POST',
+        //         dataType: 'json',
+        //         success: function(response){
+        //             console.log('ok');
+        //         },
+        //         error: function(e){
+        //             revertFunc();
+        //             alert('Error processing your request: '+e.responseText);
+        //         }
+        //     });
+        //
+        // },
+        // eventResize: function(event, delta, revertFunc) {
+        //
+        //     var newData = event.end.format('YYYY-MM-DD');
+        //     $.ajax({
+        //         url: Routing.generate('fullcalendar_resizedate'),
+        //         data: { id: event.id, newDate: newData },
+        //         type: 'POST',
+        //         dataType: 'json',
+        //         success: function(response){
+        //             console.log('ok');
+        //         },
+        //         error: function(e){
+        //             revertFunc();
+        //             alert('Error processing your request: '+e.responseText);
+        //         }
+        //     });
+        //
+        // },
 
         eventClick: function(calEvent, jsEvent, view) {
+             var test = '';
+              if (calEvent.type != null) {
+              test = "<b>Type  :</b> "+ calEvent.type ; }
+             else {
+                 test = "<b>Projet  :</b> "+calEvent.sheeets;
+            }
+
             $('#modal-header').html("<b>Employé :</b>"+calEvent.title);
-            $('#modal-body').html("<b>Type  :</b> "+calEvent.type +"<br>"+
+            $('#modal-body').html(test+"<br>"+
                 "<b>Date de Début :</b>"+calEvent.start.format('DD-MM-YYYY LT')+"<br>"+
                 "<b>Date de Fin:</b>"+calEvent.end.format('DD-MM-YYYY LT'));
+             console.log(calEvent.end.format('DD-MM-YYYY LT'));
             $('#myModal').modal();
 
         },

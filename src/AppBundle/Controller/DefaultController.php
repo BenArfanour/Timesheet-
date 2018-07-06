@@ -15,7 +15,13 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        return $this->render('::profile.html.twig');
+
+
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->render('::profile.html.twig');
+        }
+             return $this->redirectToRoute('fos_user_security_login');
     }
 
     /**

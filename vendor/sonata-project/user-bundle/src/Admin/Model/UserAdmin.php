@@ -213,6 +213,12 @@ class UserAdmin extends AbstractAdmin
                 'dp_language' => 'fr',
                 'format' => 'dd/MM/yyyy'
             ))
+            ->add('image', 'sonata_type_model_list', array('btn_edit' => false, 'btn_list' => false, 'label' => 'Aperçu Photo', 'required' => true), array(
+                'link_parameters' => array(
+                    'provider' => 'sonata.media.provider.image',
+                    'context' => 'default',
+                )
+            ))
             ->add('firstname', null, ['required' => false])
             ->add('lastname', null, ['required' => false])
 //            ->add('website', UrlType::class, ['required' => false])

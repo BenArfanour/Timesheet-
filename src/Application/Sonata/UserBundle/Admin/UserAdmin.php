@@ -1,32 +1,21 @@
 <?php
 
-declare(strict_types=1);
 
-/*
- * This file is part of the Sonata Project package.
- *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace Sonata\UserBundle\Admin\Model;
+namespace Application\Sonata\UserBundle\Admin;
 
 
-use FOS\UserBundle\Model\UserManagerInterface;
-use Sonata\AdminBundle\Admin\AbstractAdmin;
+
+use Sonata\UserBundle\Admin\Model\UserAdmin as BaseAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\CoreBundle\Form\Type\DatePickerType;
 use Sonata\UserBundle\Form\Type\SecurityRolesType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormTypeInterface;
 
-class UserAdmin extends AbstractAdmin
+class UserAdmin extends BaseAdmin
 {
     /**
      * @var UserManagerInterface
@@ -208,6 +197,14 @@ class UserAdmin extends AbstractAdmin
             ))
             ->end()
             ->with('Profile')
+            ->add('images', 'sonata_type_collection', array(), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'link_parameters' => array(
+                    'context' => 'images',
+                    'provider' => 'sonata.media.provider.image'
+                )
+            ))
             ->add('dateOfBirth','sonata_type_date_picker', array(
                 'label' => 'Date de Naissance',
                 'dp_language' => 'fr',

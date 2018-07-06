@@ -40,6 +40,7 @@ class TimesheetController extends Controller
     public function newAction(Request $request)
     {
         $timesheet = new Timesheet();
+        // on récupére l'utilisateur connecté
         $user = $this->getUser();
         $form = $this->createForm('AppBundle\Form\TimesheetType', $timesheet);
         $form->handleRequest($request);
@@ -47,8 +48,34 @@ class TimesheetController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $timesheet->setSheets($user);
+            $projetform = $form['sheeets']->getData();
 
+            //test sur le champs du projet si il != NULL
+            if ($projetform != NULL ) {
+                // récupération du Nom de projet ( dans l'input)
+                $projet = $form['sheeets']->getData()->getNom();
+                // Notre porpre requette QueryBuilder !!
+                $repository = $this->getDoctrine()->getRepository('AppBundle:Projet');
+                $query = $repository->createQueryBuilder('p')
+                    ->where('p.nom = :data')
+                    ->setParameter('data', $projet)
+                    ->getQuery();
+                // $pro est un objet (projet)
+                $pro = $query->getSingleResult();
+                $timesheet->setSheeets($pro);
+            }
+            $timesheet->setSheets($user);
+            // affectation les couleurs des Events
+            $type = $form['type']->getData();
+            if ($type == 'congé') {
+                $timesheet->setBgColor('blue');
+            }
+            if ($type == 'Maladie') {
+                $timesheet->setBgColor('red');
+            }
+            if ($type == 'Férié') {
+                $timesheet->setBgColor('yellow');
+            }
             $em->persist($timesheet);
             $em->flush();
 

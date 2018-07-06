@@ -10,8 +10,12 @@ namespace fadosProduccions\fullCalendarBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-//Ens permetrà carregar el bundle per ser utilitzat
+
 class fullCalendarBundle extends Bundle
 {
+    public function getParent()
+    {
+        return 'fados-produccions';
+    }
 
 }

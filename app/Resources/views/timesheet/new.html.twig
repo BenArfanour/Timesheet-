@@ -1,19 +1,12 @@
-{% form_theme form 'bootstrap_3_layout.html.twig' %}
 
+{#<script type="text/javascript" src="path_to_jquery.min.js"></script>#}
+<script type="text/javascript" src="{{ asset('bundles/sonatacore/vendor/moment/min/moment-with-locales.min.js') }}"></script>
+{#<script type="text/javascript" src=""></script>#}
+<script type="text/javascript" src="{{ asset('bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+{#<link rel="stylesheet" href="path_to_bootstrap.min.css" />#}
+<link rel="stylesheet" href="{{ asset('bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" />
 
-
-<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/>
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-<script>
-    $(document).ready(function() {
-        // you may need to change this code if you are not using Bootstrap Datepicker
-        $('.js-datepicker').datepicker({
-            format: 'HH:mm'
-        });
-    });
-</script>
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 
   {{  form_start(form, {
       'attr': {

@@ -28,6 +28,13 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\UserBundle\SonataUserBundle(),
             new fadosProduccions\fullCalendarBundle\fullCalendarBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
+
+
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -15,6 +15,14 @@
                         target-entity="AppBundle\Entity\Timesheet"
                         mapped-by="sheets"/>
 
+        <many-to-one
+                field="image"
+                target-entity="Application\Sonata\MediaBundle\Entity\Media"
+        >
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </many-to-one>
     </entity>
 
 

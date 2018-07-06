@@ -17,8 +17,7 @@ class ApplicationSonataUserBundle extends Bundle
     /**
      * {@inheritdoc}
      */
-    public function getParent()
-    {
+    public function getParent() {
         return 'SonataUserBundle';
     }
 }
