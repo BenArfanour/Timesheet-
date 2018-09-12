@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Application\Sonata\UserBundle\Admin;
+namespace Application\Sonata\UserBundle\Admin ;
 
 
+use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
 
-use Sonata\UserBundle\Admin\Model\UserAdmin as BaseAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -15,7 +15,7 @@ use Sonata\UserBundle\Form\Type\SecurityRolesType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormTypeInterface;
 
-class UserAdmin extends BaseAdmin
+class UserAdmin extends BaseUserAdmin
 {
     /**
      * @var UserManagerInterface
@@ -88,8 +88,8 @@ class UserAdmin extends BaseAdmin
             ->add('createdAt')
 
             ->add('dateOfBirth', 'date', array(
-                  'pattern' => 'dd MMM y G',
-                  'locale' => 'fr',
+                        'pattern' => 'dd MMM y G',
+                        'locale' => 'fr',
                    'label' => 'Date de Naissance',
                 'timezone' => 'Europe/Paris',
                    )  );

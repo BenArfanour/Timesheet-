@@ -17,6 +17,9 @@ class TimesheetType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+
+        $date = new \DateTime('yyyy-MM-dd HH:mm');
         $builder
             ->add('type','choice', array(
                 'choices'=> array ('Congé'=>'Congé' , 'Maladie'=>'Maladie' ,'Férié'=>'Férié'),
@@ -31,8 +34,11 @@ class TimesheetType extends AbstractType
                 'multiple' => false,
                 'label'    => 'Porjet :',
             ))
-            ->add('startDatetime',DateTimePickerType::class, array (
-                'format'=> 'dd/MM/yyyy ',
+
+
+
+          /*  ->add('startDatetime',DateTimePickerType::class, array (
+                'format'=> 'Y-m-d',
                 'dp_side_by_side'       => true,
                 'dp_use_current'        => true,
                 'dp_use_seconds'        => false,
@@ -40,17 +46,27 @@ class TimesheetType extends AbstractType
                 'widget'=>'single_text',
                 'label' => 'Date de début :',
                 'html5' => false,
-            ))
-          ->add('endDatetime',DateTimePickerType::class, array (
-                        'format'=> 'dd/MM/yyyy ',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => true,
-                        'dp_use_seconds'        => false,
-                       // 'show_filter' => true,
-                        'widget'=>'single_text',
-                        'label' => 'Date de début :',
-                        'html5' => false,
-                    ));
+            ))*/
+
+                ->add('startDatetime', 'sonata_type_datetime_picker', [
+                     'format' => 'yyyy-MM-dd HH:mm',
+                     'dp_side_by_side'       => true,
+                     'dp_use_current'        => true,
+                      'dp_use_seconds'        => false
+                      'dp_min_date'   =>  $date,
+                   ])
+
+
+
+
+            ->add('endDatetime', 'sonata_type_datetime_picker', [
+                'format' => 'yyyy-MM-dd HH:mm',
+                'dp_side_by_side'       => true,
+                'dp_use_current'        => true,
+                'dp_use_seconds'        => false,
+            ]);
+
+
 
 
     }/**

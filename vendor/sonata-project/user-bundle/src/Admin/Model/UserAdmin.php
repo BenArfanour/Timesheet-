@@ -11,8 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sonata\UserBundle\Admin\Model;
-
+namespace Application\Sonata\UserBundle\Admin\Model;
 
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -24,7 +23,13 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\CoreBundle\Form\Type\DatePickerType;
 use Sonata\UserBundle\Form\Type\SecurityRolesType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\LocaleType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormTypeInterface;
+
+
 
 class UserAdmin extends AbstractAdmin
 {
@@ -97,18 +102,13 @@ class UserAdmin extends AbstractAdmin
             ->add('groups')
             ->add('enabled', null, ['editable' => true])
             ->add('createdAt')
+        ;
 
-            ->add('dateOfBirth', 'date', array(
-                'pattern' => 'dd MMM y G',
-                'locale' => 'fr',
-                'label' => 'Date de Naissance',
-                'timezone' => 'Europe/Paris',
-            )  );
-
-//        if ($this->isGranted('ROLE_SONATA_ADMIN')) {
-//            $listMapper
-//                ->add('impersonating', 'string', ['template' => '@SonataUser/Admin/Field/impersonating.html.twig']);
-//        }
+        if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
+            $listMapper
+                ->add('impersonating', 'string', ['template' => '@SonataUser/Admin/Field/impersonating.html.twig'])
+            ;
+        }
     }
 
     /**
@@ -120,7 +120,8 @@ class UserAdmin extends AbstractAdmin
             ->add('id')
             ->add('username')
             ->add('email')
-            ->add('groups');
+            ->add('groups')
+        ;
     }
 
     /**
@@ -130,35 +131,35 @@ class UserAdmin extends AbstractAdmin
     {
         $showMapper
             ->with('General')
-            ->add('username')
-            ->add('email')
+                ->add('username')
+                ->add('email')
             ->end()
             ->with('Groups')
-            ->add('groups')
+                ->add('groups')
             ->end()
             ->with('Profile')
-            ->add('dateOfBirth')
-            ->add('firstname')
-            ->add('lastname')
-            //->add('website')
-            // ->add('biography')
-            ->add('gender')
-            //  ->add('locale')
-            // ->add('timezone')
-            ->add('phone')
+                ->add('dateOfBirth')
+                ->add('firstname')
+                ->add('lastname')
+                ->add('website')
+                ->add('biography')
+                ->add('gender')
+                ->add('locale')
+                ->add('timezone')
+                ->add('phone')
             ->end()
-            //  ->with('Social')
-            //  ->add('facebookUid')
-            //->add('facebookName')
-            //->add('twitterUid')
-            //->add('twitterName')
-            //->add('gplusUid')
-            //->add('gplusName')
-            //->end()
-            //->with('Security')
-            //->add('token')
-            //->add('twoStepVerificationCode')
-            //->end()
+            ->with('Social')
+                ->add('facebookUid')
+                ->add('facebookName')
+                ->add('twitterUid')
+                ->add('twitterName')
+                ->add('gplusUid')
+                ->add('gplusName')
+            ->end()
+            ->with('Security')
+                ->add('token')
+                ->add('twoStepVerificationCode')
+            ->end()
         ;
     }
 
@@ -170,16 +171,17 @@ class UserAdmin extends AbstractAdmin
         // define group zoning
         $formMapper
             ->tab('User')
-            ->with('Profile', ['class' => 'col-md-6'])->end()
-            ->with('General', ['class' => 'col-md-6'])->end()
-            //->with('Social', ['class' => 'col-md-6'])->end()
+                ->with('Profile', ['class' => 'col-md-6'])->end()
+                ->with('General', ['class' => 'col-md-6'])->end()
+                ->with('Social', ['class' => 'col-md-6'])->end()
             ->end()
             ->tab('Security')
-            ->with('Status', ['class' => 'col-md-4'])->end()
-            ->with('Groups', ['class' => 'col-md-4'])->end()
-//            ->with('Keys', ['class' => 'col-md-4'])->end()
-            ->with('Roles', ['class' => 'col-md-4'])->end()
-            ->end();
+                ->with('Status', ['class' => 'col-md-4'])->end()
+                ->with('Groups', ['class' => 'col-md-4'])->end()
+                ->with('Keys', ['class' => 'col-md-4'])->end()
+                ->with('Roles', ['class' => 'col-md-12'])->end()
+            ->end()
+        ;
 
         $now = new \DateTime();
 
@@ -196,66 +198,62 @@ class UserAdmin extends AbstractAdmin
 
         $formMapper
             ->tab('User')
-            ->with('General')
-            ->add('username')
-            ->add('email')
-            ->add('plainPassword', 'repeated', array(
-                'type' => 'password',
-                'options' => array('translation_domain' => 'FOSUserBundle'),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
-                'invalid_message' => 'fos_user.password.mismatch',
-            ))
-            ->end()
-            ->with('Profile')
-            ->add('dateOfBirth','sonata_type_date_picker', array(
-                'label' => 'Date de Naissance',
-                'dp_language' => 'fr',
-                'format' => 'dd/MM/yyyy'
-            ))
-            ->add('image', 'sonata_type_model_list', array('btn_edit' => false, 'btn_list' => false, 'label' => 'Aperçu Photo', 'required' => true), array(
-                'link_parameters' => array(
-                    'provider' => 'sonata.media.provider.image',
-                    'context' => 'default',
-                )
-            ))
-            ->add('firstname', null, ['required' => false])
-            ->add('lastname', null, ['required' => false])
-//            ->add('website', UrlType::class, ['required' => false])
-//            ->add('biography', TextType::class, ['required' => false])
-            ->add('gender', ChoiceType::class, $genderOptions)
-//            ->add('locale', LocaleType::class, ['required' => false])
-//            ->add('timezone', TimezoneType::class, ['required' => false])
-            ->add('phone', null, ['required' => false])
-            ->end(
-            )//            ->with('Social')
-//            ->add('facebookUid', null, ['required' => false])
-//            ->add('facebookName', null, ['required' => false])
-//            ->add('twitterUid', null, ['required' => false])
-//            ->add('twitterName', null, ['required' => false])
-//            ->add('gplusUid', null, ['required' => false])
-//            ->add('gplusName', null, ['required' => false])
-//            ->end()
+                ->with('General')
+                    ->add('username')
+                    ->add('email')
+                    ->add('plainPassword', TextType::class, [
+                        'required' => (!$this->getSubject() || null === $this->getSubject()->getId()),
+                    ])
+                ->end()
+                ->with('Profile')
+                    ->add('dateOfBirth', DatePickerType::class, [
+                        'years' => range(1900, $now->format('Y')),
+                        'dp_min_date' => '1-1-1900',
+                        'dp_max_date' => $now->format('c'),
+                        'required' => false,
+                    ])
+                    ->add('firstname', null, ['required' => false])
+                    ->add('lastname', null, ['required' => false])
+                    ->add('website', UrlType::class, ['required' => false])
+                    ->add('biography', TextType::class, ['required' => false])
+                    ->add('gender', ChoiceType::class, $genderOptions)
+                    ->add('locale', LocaleType::class, ['required' => false])
+                    ->add('timezone', TimezoneType::class, ['required' => false])
+                    ->add('phone', null, ['required' => false])
+                ->end()
+                ->with('Social')
+                    ->add('facebookUid', null, ['required' => false])
+                    ->add('facebookName', null, ['required' => false])
+                    ->add('twitterUid', null, ['required' => false])
+                    ->add('twitterName', null, ['required' => false])
+                    ->add('gplusUid', null, ['required' => false])
+                    ->add('gplusName', null, ['required' => false])
+                ->end()
             ->end()
             ->tab('Security')
-            ->with('Status')
-            ->add('enabled', null, ['required' => false])
+                ->with('Status')
+                    ->add('enabled', null, ['required' => false])
+                ->end()
+                ->with('Groups')
+                    ->add('groups', ModelType::class, [
+                        'required' => false,
+                        'expanded' => true,
+                        'multiple' => true,
+                    ])
+                ->end()
+                ->with('Roles')
+                    ->add('realRoles', SecurityRolesType::class, [
+                        'label' => 'form.label_roles',
+                        'expanded' => true,
+                        'multiple' => true,
+                        'required' => false,
+                    ])
+                ->end()
+                ->with('Keys')
+                    ->add('token', null, ['required' => false])
+                    ->add('twoStepVerificationCode', null, ['required' => false])
+                ->end()
             ->end()
-            ->with('Groups')
-            ->add('groups', ModelType::class, [
-                'required' => false,
-                'expanded' => true,
-                'multiple' => true,
-            ])
-            ->end()
-            ->with('Roles')
-            ->add('realRoles', SecurityRolesType::class, [
-                'label' => 'form.label_roles',
-                'expanded' => true,
-                'multiple' => true,
-                'required' => false,
-            ])
-            ->end();
-
+        ;
     }
 }

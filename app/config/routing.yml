@@ -28,6 +28,8 @@ fos_js_routing:
 
 fados_fullcalendar:
     resource: "@fullCalendarBundle/Resources/config/routing.xml"
+
+
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
     prefix: /media/gallery

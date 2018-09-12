@@ -5,8 +5,7 @@
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle",
-            "Application\\": "src/Application",
-            "fados-produccions\\": "src/fados-produccions"
+            "Application\\": "src/Application"
         },
         "classmap": [
             "app/AppKernel.php",

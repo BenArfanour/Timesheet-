@@ -13,10 +13,10 @@ namespace Symfony\Component\DependencyInjection\Tests\Dumper;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Variable;
 use Symfony\Component\ExpressionLanguage\Expression;
 
@@ -77,10 +77,10 @@ class PhpDumperTest extends TestCase
 
         $container = new ContainerBuilder();
         $container->setDefinition('test', $definition);
-        $container->setParameter('foo', 'wiz'.dirname(__DIR__));
+        $container->setParameter('foo', 'wiz'.\dirname(__DIR__));
         $container->setParameter('bar', __DIR__);
         $container->setParameter('baz', '%bar%/PhpDumperTest.php');
-        $container->setParameter('buz', dirname(dirname(__DIR__)));
+        $container->setParameter('buz', \dirname(\dirname(__DIR__)));
         $container->compile();
 
         $dumper = new PhpDumper($container);
@@ -119,13 +119,13 @@ class PhpDumperTest extends TestCase
         // without compilation
         $container = include self::$fixturesPath.'/containers/container9.php';
         $dumper = new PhpDumper($container);
-        $this->assertStringEqualsFile(self::$fixturesPath.'/php/services9.php', str_replace(str_replace('\\', '\\\\', self::$fixturesPath.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR), '%path%', $dumper->dump()), '->dump() dumps services');
+        $this->assertStringEqualsFile(self::$fixturesPath.'/php/services9.php', str_replace(str_replace('\\', '\\\\', self::$fixturesPath.\DIRECTORY_SEPARATOR.'includes'.\DIRECTORY_SEPARATOR), '%path%', $dumper->dump()), '->dump() dumps services');
 
         // with compilation
         $container = include self::$fixturesPath.'/containers/container9.php';
         $container->compile();
         $dumper = new PhpDumper($container);
-        $this->assertStringEqualsFile(self::$fixturesPath.'/php/services9_compiled.php', str_replace(str_replace('\\', '\\\\', self::$fixturesPath.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR), '%path%', $dumper->dump()), '->dump() dumps services');
+        $this->assertStringEqualsFile(self::$fixturesPath.'/php/services9_compiled.php', str_replace(str_replace('\\', '\\\\', self::$fixturesPath.\DIRECTORY_SEPARATOR.'includes'.\DIRECTORY_SEPARATOR), '%path%', $dumper->dump()), '->dump() dumps services');
 
         $dumper = new PhpDumper($container = new ContainerBuilder());
         $container->register('foo', 'FooClass')->addArgument(new \stdClass());
@@ -145,7 +145,7 @@ class PhpDumperTest extends TestCase
     {
         $container = include self::$fixturesPath.'/containers/container20.php';
         $dumper = new PhpDumper($container);
-        $this->assertStringEqualsFile(self::$fixturesPath.'/php/services20.php', str_replace(str_replace('\\', '\\\\', self::$fixturesPath.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR), '%path%', $dumper->dump()), '->dump() dumps services');
+        $this->assertStringEqualsFile(self::$fixturesPath.'/php/services20.php', str_replace(str_replace('\\', '\\\\', self::$fixturesPath.\DIRECTORY_SEPARATOR.'includes'.\DIRECTORY_SEPARATOR), '%path%', $dumper->dump()), '->dump() dumps services');
     }
 
     public function testServicesWithAnonymousFactories()

@@ -12,11 +12,11 @@
 namespace Symfony\Bridge\Doctrine\Validator\Constraints;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Exception\UnexpectedTypeException;
-use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
 use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
+use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 /**
  * Unique Entity Validator checks if one or a set of fields contain unique values.
@@ -45,17 +45,17 @@ class UniqueEntityValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\UniqueEntity');
         }
 
-        if (!is_array($constraint->fields) && !is_string($constraint->fields)) {
+        if (!\is_array($constraint->fields) && !\is_string($constraint->fields)) {
             throw new UnexpectedTypeException($constraint->fields, 'array');
         }
 
-        if (null !== $constraint->errorPath && !is_string($constraint->errorPath)) {
+        if (null !== $constraint->errorPath && !\is_string($constraint->errorPath)) {
             throw new UnexpectedTypeException($constraint->errorPath, 'string or null');
         }
 
         $fields = (array) $constraint->fields;
 
-        if (0 === count($fields)) {
+        if (0 === \count($fields)) {
             throw new ConstraintDefinitionException('At least one field has to be specified.');
         }
 
@@ -70,14 +70,14 @@ class UniqueEntityValidator extends ConstraintValidator
                 throw new ConstraintDefinitionException(sprintf('Object manager "%s" does not exist.', $constraint->em));
             }
         } else {
-            $em = $this->registry->getManagerForClass(get_class($entity));
+            $em = $this->registry->getManagerForClass(\get_class($entity));
 
             if (!$em) {
-                throw new ConstraintDefinitionException(sprintf('Unable to find the object manager associated with an entity of class "%s".', get_class($entity)));
+                throw new ConstraintDefinitionException(sprintf('Unable to find the object manager associated with an entity of class "%s".', \get_class($entity)));
             }
         }
 
-        $class = $em->getClassMetadata(get_class($entity));
+        $class = $em->getClassMetadata(\get_class($entity));
         /* @var $class \Doctrine\Common\Persistence\Mapping\ClassMetadata */
 
         $criteria = array();
@@ -120,7 +120,7 @@ class UniqueEntityValidator extends ConstraintValidator
             return;
         }
 
-        $repository = $em->getRepository(get_class($entity));
+        $repository = $em->getRepository(\get_class($entity));
         $result = $repository->{$constraint->repositoryMethod}($criteria);
 
         if ($result instanceof \IteratorAggregate) {

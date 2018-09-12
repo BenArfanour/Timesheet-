@@ -7,6 +7,38 @@ in 2.8 minor versions.
 To get the diff for a specific change, go to https://github.com/symfony/symfony/commit/XXX where XXX is the change hash
 To get the diff between two versions, go to https://github.com/symfony/symfony/compare/v2.8.0...v2.8.1
 
+* 2.8.45 (2018-08-27)
+
+ * bug #28278 [HttpFoundation] Fix unprepared BinaryFileResponse sends empty file (wackymole)
+ * bug #28241 [HttpKernel] fix forwarding trusted headers as server parameters (nicolas-grekas)
+ * bug #28220 [PropertyAccess] fix type error handling when writing values (xabbuh)
+ * bug #28100 [Security] Call AccessListener after LogoutListener (chalasr)
+ * bug #28144 [HttpFoundation] fix false-positive ConflictingHeadersException (nicolas-grekas)
+ * bug #28055 [PropertyInfo] Allow nested collections (jderusse)
+ * bug #28083 Remove the Expires header when calling Response::expire() (javiereguiluz)
+
+* 2.8.44 (2018-08-01)
+
+ * security #cve-2018-14774 [HttpKernel] fix trusted headers management in HttpCache and InlineFragmentRenderer (nicolas-grekas)
+ * security #cve-2018-14773 [HttpFoundation] Remove support for legacy and risky HTTP headers (nicolas-grekas)
+ * bug #28003 [HttpKernel] Fixes invalid REMOTE_ADDR in inline subrequest when configuring trusted proxy with subnet (netiul)
+ * bug #28045 [HttpFoundation] Fix Cookie::isCleared (ro0NL)
+ * bug #28080 [HttpFoundation] fixed using _method parameter with invalid type (Phobetor)
+
+* 2.8.43 (2018-07-23)
+
+ * bug #28005 [HttpKernel] Fixed templateExists on parse error of the template name (yceruto)
+ * bug #27997 Serbo-Croatian has Serbian plural rule (kylekatarnls)
+ * bug #27941 [WebProfilerBundle] Fixed icon alignment issue using Bootstrap 4.1.2 (jmsche)
+ * bug #27937 [HttpFoundation] reset callback on StreamedResponse when setNotModified() is called (rubencm)
+ * bug #27927 [HttpFoundation] Suppress side effects in 'get' and 'has' methods of NamespacedAttributeBag (webnet-fr)
+ * bug #27904 [Filesystem] fix lock file permissions (fritzmg)
+ * bug #27758 [WebProfilerBundle] Prevent toolbar links color override by css (alcalyn)
+ * bug #27831  Check for Hyper terminal on all operating systems.  (azjezz)
+ * bug #27794 Add color support for Hyper terminal . (azjezz)
+ * bug #27809 [HttpFoundation] Fix tests: new message for status 425 (dunglas)
+ * bug #27716 [DI] fix dumping deprecated service in yaml (nicolas-grekas)
+
 * 2.8.42 (2018-06-25)
 
  * bug #27669 [Filesystem] fix file lock on SunOS (fritzmg)

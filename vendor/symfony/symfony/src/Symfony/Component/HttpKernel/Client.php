@@ -12,11 +12,11 @@
 namespace Symfony\Component\HttpKernel;
 
 use Symfony\Component\BrowserKit\Client as BaseClient;
+use Symfony\Component\BrowserKit\Cookie as DomCookie;
+use Symfony\Component\BrowserKit\CookieJar;
+use Symfony\Component\BrowserKit\History;
 use Symfony\Component\BrowserKit\Request as DomRequest;
 use Symfony\Component\BrowserKit\Response as DomResponse;
-use Symfony\Component\BrowserKit\Cookie as DomCookie;
-use Symfony\Component\BrowserKit\History;
-use Symfony\Component\BrowserKit\CookieJar;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -76,7 +76,7 @@ class Client extends BaseClient
 
         $r = new \ReflectionClass('\\Symfony\\Component\\ClassLoader\\ClassLoader');
         $requirePath = str_replace("'", "\\'", $r->getFileName());
-        $symfonyPath = str_replace("'", "\\'", dirname(dirname(dirname(__DIR__))));
+        $symfonyPath = str_replace("'", "\\'", \dirname(\dirname(\dirname(__DIR__))));
         $errorReporting = error_reporting();
 
         $code = <<<EOF
@@ -143,7 +143,7 @@ EOF;
     {
         $filtered = array();
         foreach ($files as $key => $value) {
-            if (is_array($value)) {
+            if (\is_array($value)) {
                 $filtered[$key] = $this->filterFiles($value);
             } elseif ($value instanceof UploadedFile) {
                 if ($value->isValid() && $value->getSize() > UploadedFile::getMaxFilesize()) {
