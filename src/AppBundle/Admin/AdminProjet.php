@@ -23,20 +23,22 @@ class AdminProjet extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
 
-        $date = new \DateTime(dd/MM/yyyy);
+        $date = new \DateTime();
+        $date1=date_format($date,'Y-m-d H:i:s');
+
         $formMapper
             ->with('Nouveau Projet', ['class' => 'col-md-5'])
             ->add('nom', TextType::class)
             ->add('startDate', 'sonata_type_date_picker', array(
                 'label' => 'Date de début',
                 'dp_language' => 'fr',
-                'format' => 'dd/MM/yyyy',
-                'dp_min_date'=> $date
+                'format' => 'yyyy-MM-dd HH:mm',
+                'dp_min_date'=> $date1
             ))
             ->add('endDate', 'sonata_type_date_picker', array(
                 'label' => 'Date de fin',
                 'dp_language' => 'fr',
-                'format' => 'dd/MM/yyyy'
+                'format' => 'yyyy-MM-dd HH:mm'
             ))
             ->end()
             ->with('Client', ['class' => 'col-md-6'])

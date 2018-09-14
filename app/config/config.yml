@@ -6,7 +6,9 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: fr
+    locale: en
+
+
 
 framework:
     #esi: ~
@@ -99,9 +101,34 @@ sonata_block:
             contexts: [admin]
 
 sonata_user:
-    class:
-        user: Application\Sonata\UserBundle\Entity\User
-        group: Application\Sonata\UserBundle\Entity\Group
+    security_acl: true
+    manager_type: orm      # can be orm or mongodb
+
+    table:
+        user_group: "my_custom_user_group_association_table_name"
+
+    impersonating:
+        route:                page_slug
+        parameters:           { path: / }
+
+    class:                  # Entity Classes
+        user:               Application\Sonata\UserBundle\Entity\User
+        group:              Application\Sonata\UserBundle\Entity\Group
+
+    admin:                  # Admin Classes
+        user:
+            class:          Application\Sonata\UserBundle\Admin\UserAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+
+        group:
+            class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+
+
+
+
 
 sonata_admin:
     title :              ABSHORE | ADMIN

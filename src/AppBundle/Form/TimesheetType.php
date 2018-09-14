@@ -19,7 +19,9 @@ class TimesheetType extends AbstractType
     {
 
 
-        $date = new \DateTime('yyyy-MM-dd HH:mm');
+        $date = new \DateTime();
+        $date1=date_format($date,'Y-m-d H:i:s');
+
         $builder
             ->add('type','choice', array(
                 'choices'=> array ('Congé'=>'Congé' , 'Maladie'=>'Maladie' ,'Férié'=>'Férié'),
@@ -51,12 +53,13 @@ class TimesheetType extends AbstractType
                 ->add('startDatetime', 'sonata_type_datetime_picker', [
                      'format' => 'yyyy-MM-dd HH:mm',
                      'dp_side_by_side'       => true,
+                    'label' => 'Date de début :',
                      'dp_use_current'        => true,
-                      'dp_use_seconds'        => false
-                      'dp_min_date'   =>  $date,
+                      'dp_use_seconds'        => false,
+                      'dp_min_date'   =>  $date1
                    ])
 
-
+                // $startdate = $form['startDatetime']->getData();
 
 
             ->add('endDatetime', 'sonata_type_datetime_picker', [
@@ -64,6 +67,8 @@ class TimesheetType extends AbstractType
                 'dp_side_by_side'       => true,
                 'dp_use_current'        => true,
                 'dp_use_seconds'        => false,
+                'label' => 'Date de fin',
+                'dp_min_date' => $date1
             ]);
 
 

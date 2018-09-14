@@ -185,7 +185,7 @@
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
     <parameter key="secret">b3a681c99f4960ade0689480b4fb1a8881271b72</parameter>
-    <parameter key="locale">fr</parameter>
+    <parameter key="locale">en</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
     <parameter key="response_listener.class">Symfony\Component\HttpKernel\EventListener\ResponseListener</parameter>
@@ -237,7 +237,7 @@
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.trusted_proxies" type="collection"/>
-    <parameter key="kernel.default_locale">fr</parameter>
+    <parameter key="kernel.default_locale">en</parameter>
     <parameter key="session.class">Symfony\Component\HttpFoundation\Session\Session</parameter>
     <parameter key="session.flashbag.class">Symfony\Component\HttpFoundation\Session\Flash\FlashBag</parameter>
     <parameter key="session.attribute_bag.class">Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag</parameter>
@@ -928,7 +928,8 @@
     <parameter key="sonata.user.admin.groupname">sonata_user</parameter>
     <parameter key="sonata.user.admin.label_catalogue">SonataUserBundle</parameter>
     <parameter key="sonata.user.admin.groupicon">&lt;i class='fa fa-users'&gt;&lt;/i&gt;</parameter>
-    <parameter key="sonata.user.admin.user.class">Sonata\UserBundle\Admin\Entity\UserAdmin</parameter>
+    <parameter key="security.acl.user_voter.class">Sonata\UserBundle\Security\Authorization\Voter\UserAclVoter</parameter>
+    <parameter key="sonata.user.admin.user.class">Application\Sonata\UserBundle\Admin\UserAdmin</parameter>
     <parameter key="sonata.user.admin.group.class">Sonata\UserBundle\Admin\Entity\GroupAdmin</parameter>
     <parameter key="sonata.user.admin.user.entity">Application\Sonata\UserBundle\Entity\User</parameter>
     <parameter key="sonata.user.admin.group.entity">Application\Sonata\UserBundle\Entity\Group</parameter>
@@ -937,7 +938,12 @@
     <parameter key="sonata.user.admin.user.controller">SonataAdminBundle:CRUD</parameter>
     <parameter key="sonata.user.admin.group.controller">SonataAdminBundle:CRUD</parameter>
     <parameter key="sonata.user.default_avatar">bundles/sonatauser/default_avatar.png</parameter>
-    <parameter key="sonata.user.impersonating">false</parameter>
+    <parameter key="sonata.user.impersonating" type="collection">
+      <parameter key="route">page_slug</parameter>
+      <parameter key="parameters" type="collection">
+        <parameter key="path">/</parameter>
+      </parameter>
+    </parameter>
     <parameter key="sonata.user.google.authenticator.enabled">false</parameter>
     <parameter key="class_manager">AppBundle\Entity\Timesheet</parameter>
     <parameter key="sonata.media.provider.image.class">Sonata\MediaBundle\Provider\ImageProvider</parameter>
@@ -1426,6 +1432,90 @@
       <argument type="service" id="doctrine"/>
       <argument type="service" id="service_container"/>
     </service>
+    <service id="sonata.user.admin.user" class="Application\Sonata\UserBundle\Admin\UserAdmin" shared="false">
+      <tag name="sonata.admin" manager_type="orm" group="%sonata.user.admin.groupname%" label_catalogue="%sonata.user.admin.label_catalogue%" label="users" icon="&lt;i class=&quot;fa fa-users&quot;&gt;&lt;/i&gt;"/>
+      <argument>sonata.user.admin.user</argument>
+      <argument>Application\Sonata\UserBundle\Entity\User</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setUserManager">
+        <argument type="service" id="fos_user.user_manager"/>
+      </call>
+      <call method="setTranslationDomain">
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+        <argument>false</argument>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setPagerType">
+        <argument>default</argument>
+      </call>
+      <call method="setLabel">
+        <argument>users</argument>
+      </call>
+      <call method="showMosaicButton">
+        <argument>true</argument>
+      </call>
+      <call method="setTemplateRegistry">
+        <argument type="service" id="sonata.user.admin.user.template_registry"/>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -1440,7 +1530,7 @@
     <service id="locale_listener" class="Symfony\Component\HttpKernel\EventListener\LocaleListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="request_stack"/>
-      <argument>fr</argument>
+      <argument>en</argument>
       <argument type="service" id="router" on-invalid="ignore"/>
     </service>
     <service id="translator_listener" class="Symfony\Component\HttpKernel\EventListener\TranslatorListener">
@@ -2105,7 +2195,7 @@
       </call>
       <call method="setFallbackLocales">
         <argument type="collection">
-          <argument>fr</argument>
+          <argument>en</argument>
         </argument>
       </call>
       <autowiring-type>Symfony\Component\Translation\TranslatorInterface</autowiring-type>
@@ -3049,7 +3139,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5b992bd7838fd2.89348201</argument>
+            <argument>5b9b7c281ec6c7.43780453</argument>
           </service>
         </argument>
         <argument type="service">
@@ -3063,7 +3153,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5b992bd7838fd2.89348201</argument>
+            <argument>5b9b7c281ec6c7.43780453</argument>
           </service>
         </argument>
       </argument>
@@ -3105,6 +3195,26 @@
               </argument>
               <argument type="service" id="monolog.logger.security" on-invalid="null"/>
               <argument>true</argument>
+            </service>
+          </argument>
+          <argument type="service">
+            <service class="Sonata\UserBundle\Security\Authorization\Voter\UserAclVoter" public="false">
+              <tag name="monolog.logger" channel="security"/>
+              <tag name="security.voter" priority="255"/>
+              <argument type="service" id="security.acl.provider"/>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Acl\Domain\ObjectIdentityRetrievalStrategy" public="false"/>
+              </argument>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Acl\Domain\SecurityIdentityRetrievalStrategy" public="false">
+                  <argument type="service" id="security.role_hierarchy"/>
+                  <argument type="service" id="security.authentication.trust_resolver"/>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Acl\Permission\BasicPermissionMap" public="false"/>
+              </argument>
+              <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             </service>
           </argument>
           <argument type="service">
@@ -3396,7 +3506,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5b992bd7838fd2.89348201</argument>
+            <argument>5b9b7c281ec6c7.43780453</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3506,7 +3616,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5b992bd7838fd2.89348201</argument>
+            <argument>5b9b7c281ec6c7.43780453</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4050,6 +4160,12 @@
             </argument>
             <argument>security.acl.dbal.schema_listener</argument>
           </call>
+          <call method="addEventListener">
+            <argument type="collection">
+              <argument>loadClassMetadata</argument>
+            </argument>
+            <argument type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
+          </call>
         </service>
       </argument>
       <argument type="collection"/>
@@ -4136,6 +4252,9 @@
     </service>
     <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\Bundle\DoctrineBundle\Mapping\ContainerAwareEntityListenerResolver">
       <argument type="service" id="service_container"/>
+    </service>
+    <service id="doctrine.orm.default_listeners.attach_entity_listeners" class="Doctrine\ORM\Tools\AttachEntityListenersListener">
+      <tag name="doctrine.event_listener" event="loadClassMetadata"/>
     </service>
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
@@ -5077,7 +5196,7 @@
             <argument key="targetEntity">Application\Sonata\UserBundle\Entity\Group</argument>
             <argument key="cascade" type="collection"/>
             <argument key="joinTable" type="collection">
-              <argument key="name">fos_user_user_group</argument>
+              <argument key="name">my_custom_user_group_association_table_name</argument>
               <argument key="joinColumns" type="collection">
                 <argument type="collection">
                   <argument key="name">user_id</argument>
@@ -5436,7 +5555,7 @@
           <argument key="sonata_user" type="collection">
             <argument key="label">sonata_user</argument>
             <argument key="label_catalogue">SonataUserBundle</argument>
-            <argument key="icon">&lt;i class='fa fa-users'&gt;&lt;/i&gt;</argument>
+            <argument key="icon">&lt;i class="fa fa-users"&gt;&lt;/i&gt;</argument>
             <argument key="roles" type="collection"/>
             <argument key="on_top">false</argument>
             <argument key="keep_open">false</argument>
@@ -5962,90 +6081,6 @@
     <service id="sonata.user.form.roles_matrix_type" class="Sonata\UserBundle\Form\Type\RolesMatrixType">
       <tag name="form.type"/>
       <argument type="service" id="sonata.user.matrix_roles_builder"/>
-    </service>
-    <service id="sonata.user.admin.user" class="Sonata\UserBundle\Admin\Entity\UserAdmin" shared="false">
-      <tag name="sonata.admin" manager_type="orm" group="%sonata.user.admin.groupname%" label="users" label_catalogue="%sonata.user.admin.label_catalogue%" label_translator_strategy="sonata.admin.label.strategy.underscore" icon="%sonata.user.admin.groupicon%"/>
-      <argument>sonata.user.admin.user</argument>
-      <argument>Application\Sonata\UserBundle\Entity\User</argument>
-      <argument>SonataAdminBundle:CRUD</argument>
-      <call method="setUserManager">
-        <argument type="service" id="fos_user.user_manager"/>
-      </call>
-      <call method="setTranslationDomain">
-        <argument>SonataUserBundle</argument>
-      </call>
-      <call method="setFormTheme">
-        <argument type="collection">
-          <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
-        </argument>
-      </call>
-      <call method="setFilterTheme">
-        <argument type="collection">
-          <argument>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</argument>
-        </argument>
-      </call>
-      <call method="setLabelTranslatorStrategy">
-        <argument type="service" id="sonata.admin.label.strategy.underscore"/>
-      </call>
-      <call method="setManagerType">
-        <argument>orm</argument>
-      </call>
-      <call method="setModelManager">
-        <argument type="service" id="sonata.admin.manager.orm"/>
-      </call>
-      <call method="setFormContractor">
-        <argument type="service" id="sonata.admin.builder.orm_form"/>
-      </call>
-      <call method="setShowBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_show"/>
-      </call>
-      <call method="setListBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_list"/>
-      </call>
-      <call method="setDatagridBuilder">
-        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
-      </call>
-      <call method="setTranslator">
-        <argument type="service" id="translator"/>
-        <argument>false</argument>
-      </call>
-      <call method="setConfigurationPool">
-        <argument type="service" id="sonata.admin.pool"/>
-      </call>
-      <call method="setRouteGenerator">
-        <argument type="service" id="sonata.admin.route.default_generator"/>
-      </call>
-      <call method="setValidator">
-        <argument type="service" id="validator"/>
-      </call>
-      <call method="setSecurityHandler">
-        <argument type="service" id="sonata.admin.security.handler"/>
-      </call>
-      <call method="setMenuFactory">
-        <argument type="service" id="knp_menu.factory"/>
-      </call>
-      <call method="setRouteBuilder">
-        <argument type="service" id="sonata.admin.route.path_info"/>
-      </call>
-      <call method="setPagerType">
-        <argument>default</argument>
-      </call>
-      <call method="setLabel">
-        <argument>users</argument>
-      </call>
-      <call method="showMosaicButton">
-        <argument>true</argument>
-      </call>
-      <call method="setTemplateRegistry">
-        <argument type="service" id="sonata.user.admin.user.template_registry"/>
-      </call>
-      <call method="setSecurityInformation">
-        <argument type="collection"/>
-      </call>
-      <call method="initialize"/>
-      <call method="addExtension">
-        <argument type="service" id="sonata.admin.event.extension"/>
-      </call>
     </service>
     <service id="sonata.user.admin.group" class="Sonata\UserBundle\Admin\Entity\GroupAdmin" shared="false">
       <tag name="sonata.admin" manager_type="orm" group="%sonata.user.admin.groupname%" label="groups" label_catalogue="%sonata.user.admin.label_catalogue%" label_translator_strategy="sonata.admin.label.strategy.underscore"/>
@@ -8706,15 +8741,7 @@
         <argument>ApplicationSonataUser</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/Timesheet-/src/Application/Sonata/UserBundle/Resources/views</argument>
-        <argument>ApplicationSonataUser</argument>
-      </call>
-      <call method="addPath">
         <argument>/var/www/html/Timesheet-/app/Resources/ApplicationSonataUserBundle/views</argument>
-        <argument>SonataUser</argument>
-      </call>
-      <call method="addPath">
-        <argument>/var/www/html/Timesheet-/src/Application/Sonata/UserBundle/Resources/views</argument>
         <argument>SonataUser</argument>
       </call>
       <call method="addPath">

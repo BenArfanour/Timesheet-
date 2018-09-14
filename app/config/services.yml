@@ -20,9 +20,24 @@ services:
         tags:
           - { name: sonata.admin, manager_type: orm,group: "Client", label: Client ,icon: '<i class="fa fa-user"></i>'}
         public: true
+
     fados.calendar.service:
            class:  fadosProduccions\fullCalendarBundle\Services\CalendarManagerRegistry
            arguments: ["@doctrine","@service_container"]
+
+
+
+
+    sonata.user.admin.user:
+        class: "%sonata.user.admin.user.class%"
+        arguments: [~, "%sonata.user.admin.user.entity%", "%sonata.user.admin.user.controller%"]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "%sonata.user.admin.groupname%", label_catalogue: "%sonata.user.admin.label_catalogue%", label: "users", icon: "<i class=\"fa fa-users\"></i>" }
+        calls:
+            - [ setUserManager, [ "@fos_user.user_manager" ] ]
+            - [ setTranslationDomain, [ "%sonata.user.admin.user.translation_domain%" ] ]
+
+
 #    admin.media:
 #        class: Application\Sonata\MediaBundle\Admin\MediaAdmin
 #        arguments: [ null, Application\Sonata\MediaBundle\Entity\Media, "MediaBundle:MediaAdmin" ]

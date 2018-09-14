@@ -10,7 +10,6 @@ namespace AppBundle\Services;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
-use Doctrine\ORM\EntityManager;
 use fadosProduccions\fullCalendarBundle\Services\CalendarManagerRegistry as baseService;
 
 class CalendarManagerRegistry extends  baseService
@@ -34,6 +33,8 @@ class CalendarManagerRegistry extends  baseService
     }
 
      public function getEvents($dataFrom,$dataTo,$user) {
+
+
         $qb = $this->manager->createQueryBuilder()
              ->select('c')
              ->from($this->recipient, 'c')

@@ -1,10 +1,9 @@
 <?php
-
-
 namespace Application\Sonata\UserBundle\Admin ;
 
 
 use Sonata\UserBundle\Admin\Model\UserAdmin as BaseUserAdmin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -12,33 +11,30 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\UserBundle\Form\Type\SecurityRolesType;
+use Sonata\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormTypeInterface;
 
-class UserAdmin extends BaseUserAdmin
+
+
+class UserAdmin extends AbstractAdmin
 {
     /**
      * @var UserManagerInterface
      */
     protected $userManager;
-
     /**
      * {@inheritdoc}
      */
     public function getFormBuilder()
     {
         $this->formOptions['data_class'] = $this->getClass();
-
         $options = $this->formOptions;
         $options['validation_groups'] = (!$this->getSubject() || null === $this->getSubject()->getId()) ? 'Registration' : 'Profile';
-
         $formBuilder = $this->getFormContractor()->getFormBuilder($this->getUniqid(), $options);
-
         $this->defineFormBuilder($formBuilder);
-
         return $formBuilder;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -49,7 +45,6 @@ class UserAdmin extends BaseUserAdmin
             return !in_array($v, ['password', 'salt']);
         });
     }
-
     /**
      * {@inheritdoc}
      */
@@ -58,7 +53,6 @@ class UserAdmin extends BaseUserAdmin
         $this->getUserManager()->updateCanonicalFields($user);
         $this->getUserManager()->updatePassword($user);
     }
-
     /**
      * @param UserManagerInterface $userManager
      */
@@ -66,7 +60,6 @@ class UserAdmin extends BaseUserAdmin
     {
         $this->userManager = $userManager;
     }
-
     /**
      * @return UserManagerInterface
      */
@@ -74,7 +67,6 @@ class UserAdmin extends BaseUserAdmin
     {
         return $this->userManager;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -86,20 +78,17 @@ class UserAdmin extends BaseUserAdmin
             ->add('groups')
             ->add('enabled', null, ['editable' => true])
             ->add('createdAt')
-
             ->add('dateOfBirth', 'date', array(
-                        'pattern' => 'dd MMM y G',
-                        'locale' => 'fr',
-                   'label' => 'Date de Naissance',
+                'pattern' => 'dd MMM y G',
+                'locale' => 'fr',
+                'label' => 'Date de Naissance',
                 'timezone' => 'Europe/Paris',
-                   )  );
-
+            )  );
 //        if ($this->isGranted('ROLE_SONATA_ADMIN')) {
 //            $listMapper
 //                ->add('impersonating', 'string', ['template' => '@SonataUser/Admin/Field/impersonating.html.twig']);
 //        }
     }
-
     /**
      * {@inheritdoc}
      */
@@ -111,7 +100,6 @@ class UserAdmin extends BaseUserAdmin
             ->add('email')
             ->add('groups');
     }
-
     /**
      * {@inheritdoc}
      */
@@ -150,7 +138,6 @@ class UserAdmin extends BaseUserAdmin
             //->end()
         ;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -169,20 +156,16 @@ class UserAdmin extends BaseUserAdmin
 //            ->with('Keys', ['class' => 'col-md-4'])->end()
             ->with('Roles', ['class' => 'col-md-4'])->end()
             ->end();
-
         $now = new \DateTime();
-
         $genderOptions = [
             'choices' => call_user_func([$this->getUserManager()->getClass(), 'getGenderList']),
             'required' => true,
             'translation_domain' => $this->getTranslationDomain(),
         ];
-
         // NEXT_MAJOR: Remove this when dropping support for SF 2.8
         if (method_exists(FormTypeInterface::class, 'setDefaultOptions')) {
             $genderOptions['choices_as_values'] = true;
         }
-
         $formMapper
             ->tab('User')
             ->with('General')
@@ -197,14 +180,7 @@ class UserAdmin extends BaseUserAdmin
             ))
             ->end()
             ->with('Profile')
-            ->add('images', 'sonata_type_collection', array(), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'link_parameters' => array(
-                    'context' => 'images',
-                    'provider' => 'sonata.media.provider.image'
-                )
-            ))
+
             ->add('dateOfBirth','sonata_type_date_picker', array(
                 'label' => 'Date de Naissance',
                 'dp_language' => 'fr',
@@ -219,7 +195,7 @@ class UserAdmin extends BaseUserAdmin
 //            ->add('timezone', TimezoneType::class, ['required' => false])
             ->add('phone', null, ['required' => false])
             ->end(
-)//            ->with('Social')
+            )//            ->with('Social')
 //            ->add('facebookUid', null, ['required' => false])
 //            ->add('facebookName', null, ['required' => false])
 //            ->add('twitterUid', null, ['required' => false])
@@ -241,12 +217,11 @@ class UserAdmin extends BaseUserAdmin
             ->end()
             ->with('Roles')
             ->add('realRoles', SecurityRolesType::class, [
-                     'label' => 'form.label_roles',
-                     'expanded' => true,
-                     'multiple' => true,
-                     'required' => false,
+                'label' => 'form.label_roles',
+                'expanded' => true,
+                'multiple' => true,
+                'required' => false,
             ])
             ->end();
-
     }
 }

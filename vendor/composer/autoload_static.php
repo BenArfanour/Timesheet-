@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd8d6c81496dc4762844c9582807665ff
+class ComposerStaticInit8038ea0141a7cca04b9685905c8c44bb
 {
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
@@ -15,8 +15,8 @@ class ComposerStaticInitd8d6c81496dc4762844c9582807665ff
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'e40631d46120a9c38ea139981f8dab26' => __DIR__ . '/..' . '/ircmaxell/password-compat/lib/password.php',
-        '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
         '3e2471375464aac821502deb0ac64275' => __DIR__ . '/..' . '/symfony/polyfill-php54/bootstrap.php',
         'edc6464955a37aa4d5fbf39d40fb6ee7' => __DIR__ . '/..' . '/symfony/polyfill-php55/bootstrap.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
@@ -45,6 +45,7 @@ class ComposerStaticInitd8d6c81496dc4762844c9582807665ff
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Polyfill\\Apcu\\' => 22,
             'Symfony\\Component\\Security\\Acl\\' => 31,
+            'Symfony\\Component\\Intl\\' => 23,
             'Symfony\\Component\\' => 18,
             'Symfony\\Bundle\\SwiftmailerBundle\\' => 33,
             'Symfony\\Bundle\\MonologBundle\\' => 29,
@@ -188,6 +189,10 @@ class ComposerStaticInitd8d6c81496dc4762844c9582807665ff
         'Symfony\\Component\\Security\\Acl\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-acl',
+        ),
+        'Symfony\\Component\\Intl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/intl',
         ),
         'Symfony\\Component\\' => 
         array (
@@ -364,9 +369,6 @@ class ComposerStaticInitd8d6c81496dc4762844c9582807665ff
         'Doctrine\\Common\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
-            1 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
-            2 => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Common',
-            3 => __DIR__ . '/..' . '/doctrine/reflection/lib/Doctrine/Common',
         ),
         'Doctrine\\Bundle\\DoctrineCacheBundle\\' => 
         array (
@@ -515,10 +517,10 @@ class ComposerStaticInitd8d6c81496dc4762844c9582807665ff
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd8d6c81496dc4762844c9582807665ff::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd8d6c81496dc4762844c9582807665ff::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd8d6c81496dc4762844c9582807665ff::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitd8d6c81496dc4762844c9582807665ff::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8038ea0141a7cca04b9685905c8c44bb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8038ea0141a7cca04b9685905c8c44bb::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8038ea0141a7cca04b9685905c8c44bb::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit8038ea0141a7cca04b9685905c8c44bb::$classMap;
 
         }, null, ClassLoader::class);
     }
